@@ -1,0 +1,56 @@
+<%-include("partials/header.ejs")%>
+  
+  <section id="about-home">
+        <h2>About Us /</h2>
+    </section>
+
+    <section id="about-container">
+        <div class="about-img">
+            <img src="/images/uni2.jpg" alt="">
+			<img src="/images/about.jpg" alt="">
+			
+        </div>
+  <br>
+  <br>
+  
+        <div class="about-text">
+            <h1>Discover Your Dream University in Ontario</h1>
+			<br>
+
+
+<h3><br>Set Your Future in Motion</h3>
+<p>Whether you're a high school graduate ready to pursue higher education or a transfer student seeking new opportunities, ULocate is your steadfast companion throughout the process. Our user-friendly interface, intuitive search tools, and detailed university profiles ensure that you have all the essential information at your fingertips.</p>
+<h3>Stay Informed and Connected</h3>
+<p>Stay updated with the latest news, events, and campus life at your chosen universities. Our blog and newsletter keep you informed about admission updates, scholarship opportunities, and other essential information that can shape your academic journey.</p>
+<h3>Ready to Embark on a Journey of Discovery?</h3>
+<p>Start your path to finding the perfect university in Ontario today! Explore the diverse program offerings, discover personalized recommendations, and set your future in motion with ULocate.</p>
+<p>Remember, your choice of university can unlock a world of possibilities and set you on the path to success. Let ULocate be your guiding light on this thrilling educational adventure!</p>
+<div class="about-fe">
+    <div class="fe-text">
+        <h4>Begin Your Quest Today!</h5>
+        <p>Join ULocate now and embark on a journey of discovery to find the ideal university that aligns with your dreams and aspirations.</p>
+    </div>
+</div>
+
+        </div>
+        <!-- Floating Button -->
+    <button class="floating-button">
+        <i class="fas fa-comments"></i> <!-- Font Awesome icon (chat bubble) -->
+        Talk to Our Representative
+    </button>
+    </section>
+
+    
+
+    <script>
+        $("#menu-btn").click(function() {
+            $("nav .navigation ul").addClass("active");
+        });
+        $("#menu-close").click(function() {
+            $("nav .navigation ul").removeClass("active");
+        });
+    </script>
+
+</body>
+<%-include("partials/footer.ejs")%>
+</html>

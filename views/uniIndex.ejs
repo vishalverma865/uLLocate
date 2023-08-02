@@ -1,0 +1,273 @@
+
+ <%-include("partials/BootHeader.ejs")%>
+ 
+ <link rel="stylesheet" href="/styles/content.css">
+ <link rel="stylesheet" href="/styles/bootStrap.css" >
+ <link rel="stylesheet" href="/styles/sty.css">
+
+<div class = "searchFormCss">
+    <form  action="/search" method="POST">
+      <input type="search" name="UniValue" id="UniSearch" placeholder="University"> 
+      <label id="orSearchLaberl" >OR</label>
+
+      <select name="proviceValue" id="ProvinceSearch" class="province-select" placeholder="Province">
+        <option value="">Select a Province</option>
+        <option value="Yukon">Yukon</option>
+        <option value="Quebec">Quebec</option>
+        <option value="Ontario">Ontario</option>
+        <option value="Alberta">Alberta</option>
+        <option value="Manitoba">Manitoba</option>
+        <option value="Nova Scotia">Nova Scotia</option>
+        <option value="Newfoundland">Newfoundland</option>
+        <option value="Saskatchewan">Saskatchewan</option>
+        <option value="New Brunswick">New Brunswick</option>
+        <option value="British Columbia">British Columbia</option>
+        <option value="Prince Edward Island">Prince Edward Island</option>
+
+        <!-- Add more options here -->
+      </select>
+    
+      <input class = "submitSearchForm"  type="submit" value="search">
+     
+    </form>
+    </div>
+    <% let itemsPerPage = 85; %>
+<% let startIndex = 0; %>
+<% let endIndex = Math.min(startIndex + itemsPerPage, item.length); %>
+    <% for (let i = startIndex; i < endIndex; i++) { %>
+    <div class="college-item">
+        <img class="college-image" src= <%= item[i].img %>  alt="College Image">
+        <div class="college-details">  
+          <form class = "college-container" action="/userIndex" method="POST" style="border: none;">  
+          <input type = "submit" value = '<%= item[i].Name %>' name= 'selectedUniversity' class="college-name" id = "buttonPost" >
+          <input type="hidden" name="selectedIndex" value='<%= i %>'>
+          <p>Location: <%=item[i].City%>, <%=item[i].Province%></p>
+        </form>
+        </div>
+        <% let isMatched = false; %>
+        <% for (let j = 0; j < userIndex.length; j++) { %>
+          <% if (userIndex[j] == i) { %>
+            <% isMatched = true; %>
+          <% } %>
+        <% } %>
+        <% if (isMatched) { %>
+          <button style ="background-color: rgb(76, 175, 80); color: #0d0d0d;" class="toggle-button" name="index" onclick="toggleState('<%= i %>')"  >Saved</button>
+        <% } else { %>
+          <button style = "background-color: rgba(126, 122, 114, 0.065); color: #0d0d0d;"  class="toggle-button" name="index" onclick="toggleState('<%= i %>')" >Save</button>
+        <% } %>
+    </div>
+  
+<% } %>
+
+<div class="pagination-buttons">
+  <button id="prevButton">Go to Previous 10</button>
+  <button id="nextButton">Go to Next 10</button>
+</div>
+
+
+
+<script>  
+
+      function toggleState(index){
+        let saved = null;
+      const buttons = document.getElementsByClassName("toggle-button");
+      if( buttons[index].textContent == "Saved") {
+        saved = false;
+        buttons[index].style.backgroundColor = "rgba(126, 122, 114, 0.065)";
+        buttons[index].textContent = "Save"
+        addToFav(index, saved);
+        
+      } else{
+        saved = true;
+        buttons[index].style.backgroundColor = "rgb(76, 175, 80)";
+        buttons[index].classList.toggle("on");
+      buttons[index].innerHTML = "Saved"
+      addToFav(index, saved);
+     
+      }
+      
+    }
+
+
+    function addToFav(index, saved) {
+const data = { index: index, status:saved};
+fetch(`/addToCart/${index}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      if (response.ok) {
+        window.location.href = '/addToCart';
+      } else {
+        alert('Error adding item to cart.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+    
+  }
+  window.addEventListener('unload', function () {
+    const buttons = document.querySelectorAll('.toggle-button');
+    buttons.forEach(button => {
+      button.removeAttribute('data-saved');
+    });
+  });
+
+        
+</script>
+<script>
+// Function to check the user's login status and update the button content on page load.
+function updateLoginStatusOnLoad() {
+  const loginButton = document.getElementById("SignUpButton");
+  loginButton.style.fontSize = "20px";
+    loginButton.innerHTML = '<i class="fas fa-user"></i>';
+}
+
+window.onload = updateLoginStatusOnLoad;
+
+</script>
+
+
+<script>
+  // Function to toggle the dropdown menu
+  function toggleDropdown() {
+    const dropdown = document.getElementById('dropdown');
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Function to logout (you can customize this according to your logout logic)
+  function logout() {
+    // Perform the logout logic here
+    alert('You have been logged out.');
+    // Redirect the user to the logout page or perform any other action
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.addEventListener('click', function (event) {
+    if (!event.target.matches('.blue')) {
+      const dropdown = document.getElementById('dropdown');
+      dropdown.style.display = 'none';
+    }
+  });
+
+
+
+
+
+
+
+  // Get the Province search input field and the dropdown list container
+const provinceSearchInput = document.getElementById("ProvinceSearch");
+const provinceDropdown = document.getElementById("provinceDropdown");
+
+// Sample data for the dropdown options
+const provinces = ["Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan", "Nova Scotia", "New Brunswick", "Prince Edward Island", "Newfoundland and Labrador"];
+
+// Function to create and show the dropdown options
+function showDropdownOptions() {
+  // Clear any existing options
+  provinceDropdown.innerHTML = "";
+
+  // Create and append the options
+  provinces.forEach((province) => {
+    const option = document.createElement("div");
+    option.classList.add("dropdown-option");
+    option.textContent = province;
+    option.addEventListener("click", () => {
+      provinceSearchInput.value = province;
+      hideDropdownOptions();
+    });
+    provinceDropdown.appendChild(option);
+  });
+
+  // Show the dropdown
+  provinceDropdown.style.display = "block";
+}
+
+// Function to hide the dropdown options
+function hideDropdownOptions() {
+  provinceDropdown.style.display = "none";
+}
+
+provinceSearchInput.addEventListener("focus", showDropdownOptions);
+
+document.addEventListener("click", (event) => {
+  if (!provinceDropdown.contains(event.target)) {
+    hideDropdownOptions();
+  }
+});
+
+
+</script>
+
+<script>
+  function showUniversities(startIndex, endIndex) {
+    const collegeItems = document.getElementsByClassName("college-item");
+    for (let i = 0; i < collegeItems.length; i++) {
+      if (i >= startIndex && i < endIndex) {
+        collegeItems[i].style.display = "block";
+      } else {
+        collegeItems[i].style.display = "none";
+      }
+    }
+  }
+
+  // Function to go to the previous page
+  function goToPreviousPage() {
+    startIndex = Math.max(startIndex - itemsPerPage, 0);
+    endIndex = Math.min(startIndex + itemsPerPage, item.length);
+    showUniversities(startIndex, endIndex);
+    updatePaginationButtons();
+  }
+
+  // Function to go to the next page
+  function goToNextPage() {
+    startIndex = Math.min(startIndex + itemsPerPage, item.length);
+    endIndex = Math.min(startIndex + itemsPerPage, item.length);
+    showUniversities(startIndex, endIndex);
+    updatePaginationButtons();
+  }
+
+  // Function to update the pagination buttons visibility
+  function updatePaginationButtons() {
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+
+    if (startIndex >= itemsPerPage) {
+      prevButton.style.display = "block";
+    } else {
+      prevButton.style.display = "none";
+    }
+
+    if (endIndex < item.length) {
+      nextButton.style.display = "block";
+    } else {
+      nextButton.style.display = "none";
+    }
+    window.location.reload()
+  }
+
+  // Event listener for the previous button click
+  document.getElementById("prevButton").addEventListener("click", () => {
+    goToPreviousPage();
+  });
+
+  // Event listener for the next button click
+  document.getElementById("nextButton").addEventListener("click", () => {
+    goToNextPage();
+  });
+
+  // Initialize the first page on page load
+  let itemsPerPage = 10;
+  let startIndex = 0;
+  let endIndex = Math.min(startIndex + itemsPerPage, item.length);
+  showUniversities(startIndex, endIndex);
+  updatePaginationButtons();
+</script>
+
+</body>
+<%-include("partials/footer.ejs")%>

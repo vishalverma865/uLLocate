@@ -1,0 +1,33 @@
+
+<%-include("partials/header.ejs")%>
+    
+
+<link rel="stylesheet" href="/styles/sty.css">
+    <link rel="stylesheet" href="/styles/register.css">
+    <link rel="stylesheet" href="/styles/content.css">
+    <link rel="stylesheet" href="/styles/uniDetails.css">
+    <link rel="stylesheet" href="/styles/bootStrap.css">
+   
+<body>
+  <h1>Welcome to U-Locate</h1>
+  <form action="/login" method="POST">
+    <label for="email">Email:</label>
+    <input id = "emailFiled" type="text" name="email" required value = <%=locals.email%>>
+    <label for="password">Password:</label>
+    <input id = "passFiled" type="password" name="password" required value = <%=locals.password%>>
+    <% if(locals.status == 'Email and Password not matched') { %>
+      <label><%=locals.status%></label>
+    <%  } else if(locals.status =='User not found'){ %>
+      <label><%=locals.status%> Please <a href="/register">SignUp</a> </label>
+   <%  } %>
+    <input id = "LoginButton" class="header-btn" type="submit" value="LogIn">
+  </br>
+  <label  id = "status"></label>
+  </form>
+  <script>
+
+    </script>
+</body>
+
+<%-include("partials/footer.ejs")%>
+</html>

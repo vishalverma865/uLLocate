@@ -1,0 +1,111 @@
+<%-include("partials/header.ejs")%>
+
+    <main>
+        <section id="re-home">
+            <h1>Resources</h1>
+            <p>Your ultimate resource for finding your dream universities in Canada!</p>
+        </section>
+
+        <section id="info-boxes">
+            <div class="info-box" id="intro-box">
+                <h2>Resources for Students Applying to Canadian Universities</h2>
+                <p>Welcome to ULocate, your ultimate resource for finding your dream universities in Canada! Whether you are a domestic student or an international student, we understand that the university application process can be daunting. This page aims to provide comprehensive information and resources for students of all backgrounds aspiring to study in Canada. From essential application documents to immigration requirements for international students, we've got you covered on your journey to finding the perfect university.</p>
+                <div class="learn-more-btns">
+                 <div>
+                    <h3>Domestic Students</h3>
+                    <a class="floating-btn blue" href="#domestic-students">Learn More</a>
+                 </div>
+                 <div>
+                    <h3>International Students</h3>
+                    <a class="floating-btn blue" href="#international-students">Learn More</a>
+                 </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="domestic-students">
+            <div class="info-box" id="domestic-documents">
+            <h2>For Domestic Students</h2>
+            <h6>Application Documents</h6>
+            <ul>
+                <li> Academic Transcripts:</li>
+                    Official transcripts from your high school and any post-secondary education are essential for demonstrating your academic achievements and eligibility for university programs.
+                <li> Letters of Recommendation:</li>
+                    Strong letters of recommendation from teachers, professors, or employers can greatly enhance your application. They highlight your skills, character, and potential as a student.
+                <li>Curriculum Vitae (CV) or Resume:</li>
+                    Prepare a comprehensive CV/resume showcasing your academic achievements, extracurricular activities, internships, and relevant work experience.
+            </ul>
+            <h6>Financial Aid and Scholarships</h6>
+            <ul>
+                <li> Scholarships:</li>
+                    Explore various scholarships and grants available to domestic students in Canada. Many universities offer merit-based and need-based scholarships to help with tuition costs.
+                <li> Education Loans:</li>
+                    If you need financial assistance, consider education loans provided by banks or other financial institutions for Canadian students.
+            </ul>
+            <a href="#info-boxes" class="floating-btn">Back to Top</a>
+        </div>
+        </section>
+
+        <section id="international-students">
+        <div class="info-box" id="international-documents">
+        <h2>For International Students</h2>
+        <h6>Application Documents</h6>
+        <ul>
+            <li>Academic Transcripts:</li>
+            <p>Official transcripts from your previous educational institutions, including high school and any post-secondary education, are crucial for demonstrating your academic achievements.</p>
+
+            <li>English Language Proficiency Test Scores:</li>
+            <p>Canadian universities typically require proof of English language proficiency through tests like TOEFL or IELTS. Make sure to check the specific language requirements for each university.</p>
+
+            <li>Statement of Purpose (SOP):</li>
+            <p>The SOP is a personal essay where you can showcase your motivation, academic background, and career goals. It helps universities understand your aspirations and suitability for the chosen program.</p>
+
+            <li>Letters of Recommendation:</li>
+            <p>Strong letters of recommendation from teachers, professors, or employers can greatly enhance your application. They highlight your skills, character, and potential as a student.</p>
+
+            <li>Curriculum Vitae (CV) or Resume:</li>
+            <p>Prepare a comprehensive CV/resume showcasing your academic achievements, extracurricular activities, internships, and relevant work experience.</p>
+        </ul>
+    </div>
+
+    <div class="info-box" id="immigration-study-permit">
+        <h6>Immigration and Study Permit</h6>
+        <ul>
+            <li> Study Permit:</li>
+            <p>As an international student planning to study in Canada for more than six months, you'll need a study permit. Ensure you apply well in advance and meet all the eligibility criteria.</p>
+
+            <li> Letter of Acceptance:</li>
+            <p>To obtain a study permit, you'll need an official letter of acceptance from a Designated Learning Institution (DLI) in Canada.</p>
+
+            <li> Statement of Purpose for Immigration (SOP for Immigration):</li>
+            <p>This document outlines your intention to study in Canada, your plans after graduation, and ties to your home country. It plays a crucial role in the study permit application process.</p>
+
+            <li>Proof of Sufficient Funds:</li>
+            <p>You'll need to demonstrate that you have enough funds to cover tuition fees, living expenses, and return transportation to be granted a study permit.</p>
+
+            <li>Health Insurance:</li>
+            <p>Canadian provinces have different health insurance requirements for international students. Make sure to obtain adequate health coverage during your stay.</p>
+        </ul>
+     <a href="#info-boxes" class="floating-btn">Back to Top</a>
+</div>
+    <!-- Floating Button -->
+    <button class="floating-button">
+        <i class="fas fa-comments"></i> <!-- Font Awesome icon (chat bubble) -->
+        Talk to Our Representative
+    </button>
+</section>
+</main>
+
+   
+
+    <script>
+        $("#menu-btn").click(function() {
+            $("nav .navigation ul").addClass("active");
+        });
+        $("#menu-close").click(function() {
+            $("nav .navigation ul").removeClass("active");
+        });
+    </script>
+</body>
+<%-include("partials/footer.ejs")%>
+</html>

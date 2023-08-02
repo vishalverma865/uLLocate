@@ -1,0 +1,149 @@
+#uniStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.searchFormCss {
+  /* Add styles to center the search field form */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#UniSearch,
+#ProvinceSearch {
+  width: 300px;
+  border: 1px solid rgb(57, 57, 58);
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.submitSearchForm {
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 75px;
+  height: 35px;
+  border-radius: 10px;
+  background-color:tansparent;
+  border: 1px solid  rgb(57, 57, 58);
+  color:  rgb(57, 57, 58);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.college-item {
+  display: flex;
+  align-items: center;
+  width: 800px;
+  height: 150px;
+  margin: 20px auto; /* Adjust the margin as needed */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.college-image {
+  width: 100px;
+  height: 100px;
+  object-fit:scale-down;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.college-details {
+  flex: 4;
+}
+
+.college-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+p {
+  color: dimgray;
+}
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.toggle-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.toggle-button span {
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .college-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .college-details {
+    margin-bottom: 10px;
+  }
+}
+
+
+/* Add custom styling for the select element */
+.province-select {
+  border: 2px solid rgb(59, 110, 240);
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  width: 200px; /* Adjust the width as needed */
+}
+
+/* Hide the default dropdown arrow */
+.province-select::-ms-expand {
+  display: none;
+}
+
+/* Add a custom arrow icon for the dropdown */
+.province-select:after {
+  content: "\f078";
+  font-family: FontAwesome; /* You may need to include FontAwesome for this to work */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgb(59, 110, 240);
+}
+
+/* Style the options dropdown */
+.province-select option {
+  background-color: white;
+  color: black;
+}
+
+/* Rest of your existing CSS styles remain unchanged */
+/* ... */

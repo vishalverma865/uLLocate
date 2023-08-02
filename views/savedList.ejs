@@ -1,0 +1,84 @@
+
+<%-include("partials/BootHeader.ejs")%>
+<link rel="stylesheet" href="/styles/sty.css">
+ <link rel="stylesheet" href="/styles/bootStrap.css" />
+
+ 
+<link rel="stylesheet" href="/styles/content.css">
+<link rel="stylesheet" href="/styles/bootStrap.css" />
+
+
+
+
+
+<label class = "helloCalssFromSavedList">Hello <%=locals.name %></label>
+
+<body id="uniStyle">
+    <%if(locals.item.length == 0)  {%>
+        <div class="paraForSavedList">
+            <h2 class="message"> Your 🛒 is empty 😐</h2>
+        <% } %>
+
+   <% for (let i = 0; i < locals.item.length; i++) { %>
+   <div class="college-item">
+       <img class="college-image" src="https://i.cbc.ca/1.4648699.1682535601!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/university-of-windsor-leddy-sign.JPG" alt="College Image">
+       <div class="college-details">  
+         <form class = "college-container" action="/userIndex" method="POST" style="border: none;">  
+         <input type = "submit" value = '<%= item[i].Name %>' name= 'selectedUniversity' class="college-name" id = "buttonPost" >
+         <input type="hidden" name="selectedIndex" value='<%= i %>'>
+         <p>Location: <%=item[i].City%>, <%=item[i].Province%></p>
+       </form>
+       </div>
+         <button style ="background-color: rgb(226, 69, 69); color: #040000;" class="toggle-button" name="index" onclick="removeItem('<%= item[i].Name %>')">&#x1F5D1;</button>      
+
+   </div>
+ 
+<% } %>
+
+
+<script>  
+   function removeItem(name) {
+    // const trimmedName = name.trim(); // Remove leading and trailing spaces
+  
+    alert("Remove ${name}")
+const data = { name: name, status:false};
+fetch(`/removeToCart/${name}`, {
+   method: 'POST',
+   headers: {
+     'Content-Type': 'application/json'
+   },
+   body: JSON.stringify(data)
+ })
+   .then(response => {
+     if (response.ok) {
+      location.reload();
+     } else {
+       alert('Error adding item to cart.');
+     }
+   })
+   .catch(error => {
+     console.error('Error:', error);
+   });
+   
+ }
+ window.addEventListener('unload', function () {
+   const buttons = document.querySelectorAll('.toggle-button');
+   buttons.forEach(button => {
+     button.removeAttribute('data-saved');
+   });
+ });
+
+       
+</script>
+<!-- <script>
+  // Function to check the user's login status and update the button content on page load.
+  function updateLoginStatusOnLoad() {
+    const loginButton = document.getElementById("navbarDropdownMenuLink");
+    loginButton.style.fontSize = "20px";
+      loginButton.innerHTML = '<i class="fas fa-user"></i>';
+  }
+  window.onload = updateLoginStatusOnLoad;
+  </script> -->
+</body>
+
+ <%-include("partials/footer.ejs")%>

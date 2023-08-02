@@ -1,0 +1,41 @@
+<%-include("partials/header.ejs")%>
+    
+
+<link rel="stylesheet" href="/styles/sty.css">
+    <link rel="stylesheet" href="/styles/register.css">
+    <link rel="stylesheet" href="/styles/content.css">
+    <link rel="stylesheet" href="/styles/uniDetails.css">
+    <link rel="stylesheet" href="/styles/bootStrap.css">
+<body>
+  <h1>Welcome to U-Locate</h1>
+  <div class="header">
+  </div>
+    <form action="/register" method="POST">
+      <label for="userName">Name:</label>
+    <input id = "userNameField" type="text" name="userName"  required value = <%=locals.name%>> <br>
+    <label for="email">Email:</label>
+    <input id = "emailFiled" type="text" name="email"  required value = <%=locals.email%>> <br>
+    <label for="password">Password:</label> 
+    <input id = "passFiled" type="password" name="password"  required value = <%=locals.password%>>
+    <br>
+    <% if(locals.newUser == false) { %>
+      <label><%=locals.status%> Please <a href="/login">Login</a> </label>
+    <input id = "registerButton" type="submit" value="Register" disabled = "true">
+    <%  } else{ %>
+   <label><%=locals.status%></label>
+      <input id = "registerButton"class="register-btn" type="submit" value="SignUp">
+   <%  } %>
+
+   <button class="header-btn" onclick="location.href='/login'">SignIn</button>
+
+  <label  id = "status"></label>
+  </form>
+  <p>
+     <!-- Add the anchor tag for Login -->
+  </p>
+  <script>
+    </script>
+</body>
+
+<%-include("partials/footer.ejs")%>
+</html>
