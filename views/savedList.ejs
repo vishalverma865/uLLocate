@@ -2,14 +2,8 @@
 <%-include("partials/BootHeader.ejs")%>
 <link rel="stylesheet" href="/styles/sty.css">
  <link rel="stylesheet" href="/styles/bootStrap.css" />
-
- 
 <link rel="stylesheet" href="/styles/content.css">
 <link rel="stylesheet" href="/styles/bootStrap.css" />
-
-
-
-
 
 <label class = "helloCalssFromSavedList">Hello <%=locals.name %></label>
 
@@ -21,7 +15,7 @@
 
    <% for (let i = 0; i < locals.item.length; i++) { %>
    <div class="college-item">
-       <img class="college-image" src="https://i.cbc.ca/1.4648699.1682535601!/fileImage/httpImage/image.JPG_gen/derivatives/16x9_780/university-of-windsor-leddy-sign.JPG" alt="College Image">
+       <img class="college-image" src=" <%= item[i].img %>" alt="College Image">
        <div class="college-details">  
          <form class = "college-container" action="/userIndex" method="POST" style="border: none;">  
          <input type = "submit" value = '<%= item[i].Name %>' name= 'selectedUniversity' class="college-name" id = "buttonPost" >
@@ -68,7 +62,6 @@ fetch(`/removeToCart/${name}`, {
    });
  });
 
-       
 </script>
 <!-- <script>
   // Function to check the user's login status and update the button content on page load.

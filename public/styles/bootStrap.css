@@ -1,19 +1,20 @@
 .user-icon {
     font-size: 20px;
-    color: #1b3044; /* Set your desired color */
+    color: #1b3044; 
   }
 
-  /* Optional: Add padding or margins to adjust the position of the user icon */
+  
   .navbar-toggler {
     padding: 5px;
   }
   .navbar {
     text-decoration: none;
-    background-color: #333; /* Replace "your-desired-color" with the color code or name you want */
+    background-color: #333; 
     color:rgb(21, 21, 100);
     font-size: 16px;
   font-weight: 500;
   transition: 0.3s ease;
+  
   }
   nav img {
     width: 100px;

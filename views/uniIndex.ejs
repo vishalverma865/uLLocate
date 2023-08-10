@@ -45,15 +45,15 @@
         </form>
         </div>
         <% let isMatched = false; %>
-        <% for (let j = 0; j < userIndex.length; j++) { %>
-          <% if (userIndex[j] == i) { %>
+        <% for (let j = 0; j < favUniversity.length; j++) { %>
+          <% if (favUniversity[j] == item[i].Name) { %>
             <% isMatched = true; %>
           <% } %>
         <% } %>
         <% if (isMatched) { %>
-          <button style ="background-color: rgb(76, 175, 80); color: #0d0d0d;" class="toggle-button" name="index" onclick="toggleState('<%= i %>')"  >Saved</button>
+          <button style ="background-color: rgb(76, 175, 80); color: #0d0d0d;" class="toggle-button" name="index" onclick="toggleState('<%= i %>','<%= item[i].Name %>')"  >Saved</button>
         <% } else { %>
-          <button style = "background-color: rgba(126, 122, 114, 0.065); color: #0d0d0d;"  class="toggle-button" name="index" onclick="toggleState('<%= i %>')" >Save</button>
+          <button style = "background-color: rgba(126, 122, 114, 0.065); color: #0d0d0d;"  class="toggle-button" name="index" onclick="toggleState('<%= i %>','<%= item[i].Name %>')" >Save</button>
         <% } %>
     </div>
   
@@ -68,30 +68,31 @@
 
 <script>  
 
-      function toggleState(index){
+      function toggleState(index, uName){
         let saved = null;
       const buttons = document.getElementsByClassName("toggle-button");
       if( buttons[index].textContent == "Saved") {
         saved = false;
         buttons[index].style.backgroundColor = "rgba(126, 122, 114, 0.065)";
         buttons[index].textContent = "Save"
-        addToFav(index, saved);
+        addToFav(index, saved, uName);
         
       } else{
         saved = true;
         buttons[index].style.backgroundColor = "rgb(76, 175, 80)";
         buttons[index].classList.toggle("on");
       buttons[index].innerHTML = "Saved"
-      addToFav(index, saved);
+      addToFav(index, saved, uName);
      
       }
       
     }
 
 
-    function addToFav(index, saved) {
-const data = { index: index, status:saved};
-fetch(`/addToCart/${index}`, {
+    function addToFav(index, saved, uName) {
+      alert(uName)
+const data = { index: index, status:saved, uName};
+fetch(`/addToCart`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

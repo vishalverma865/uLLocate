@@ -47,7 +47,7 @@
   align-items: center;
   width: 800px;
   height: 150px;
-  margin: 20px auto; /* Adjust the margin as needed */
+  margin: 20px auto; 
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -119,18 +119,18 @@ p {
   border-radius: 20px;
   padding: 10px;
   font-size: 16px;
-  width: 200px; /* Adjust the width as needed */
+  width: 200px; 
 }
 
-/* Hide the default dropdown arrow */
+
 .province-select::-ms-expand {
   display: none;
 }
 
-/* Add a custom arrow icon for the dropdown */
+
 .province-select:after {
   content: "\f078";
-  font-family: FontAwesome; /* You may need to include FontAwesome for this to work */
+  font-family: FontAwesome; 
   position: absolute;
   top: 50%;
   right: 10px;
@@ -139,11 +139,8 @@ p {
   color: rgb(59, 110, 240);
 }
 
-/* Style the options dropdown */
+
 .province-select option {
   background-color: white;
   color: black;
 }
-
-/* Rest of your existing CSS styles remain unchanged */
-/* ... */

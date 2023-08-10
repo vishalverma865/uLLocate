@@ -1,0 +1,77 @@
+<%-include("partials/BootHeader.ejs")%>
+ 
+<link rel="stylesheet" href="/styles/content.css">
+<link rel="stylesheet" href="/styles/bootStrap.css" >
+<link rel="stylesheet" href="/styles/sty.css">
+
+    <section id="about-home">
+        <h2>Blog /</h2>
+    </section>
+
+    <section class="blog-content">
+         
+        <h2>ULocate Blog: Real Student Stories</h2>
+
+        <h3>Finding My Path: How ULocate Helped Me Discover My Dream University</h3>
+        <div class="int-p"> 
+        <p>Welcome to the ULocate blog! Here, we share inspiring stories of students who have successfully found their dream universities across Canada with the assistance of ULocate. Our mission is to guide and support students in their educational journey, making the process of choosing the right university a smooth and fulfilling experience. In this edition, we feature testimonials from students who have benefited from our services and discovered the perfect academic destination.</p>
+      </div>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <img src="/images/t2.png" alt="Jessica Adams">
+                <h4>Testimonial 1: Jessica Adams</h4>
+                <p>
+                    "ULocate turned my university search from overwhelming to extraordinary! Their platform provided accurate personalized recommendations, and their counselors offered invaluable support throughout the application process. Thanks to ULocate, I'm now pursuing my dream course in Computer Science at the University of Toronto."
+                </p>
+            </div>
+            
+            <div class="testimonial">
+                <img src="/images/t1.png" alt="Ryan Chen">
+                <h4>Testimonial 2: Ryan Chen</h4>
+                <p>
+                    "ULocate made studying in Canada a breeze! Their comprehensive list of universities, along with insights into each city's culture, helped me make an informed decision. With ULocate's guidance, I'm now studying Business Management at the University of British Columbia!"
+                </p>
+            </div>
+            
+            <div class="testimonial">
+                <img src="/images/t3.png" alt="Emily Thompson">
+                <h4>Testimonial 3: Emily Thompson</h4>
+                <p>
+                    "ULocate was my guiding light to study in Canada! Their website made comparing universities easy, and their team provided valuable tips for interviews. Thanks to ULocate, I'm now studying Psychology at McGill University in Montreal and loving every moment of it!"
+                </p>
+            </div>
+            
+            <div class="testimonial">
+                <img src="/images/t4.png" alt="Michael Johnson">
+                <h4>Testimonial 4: Michael Johnson</h4>
+                <p>
+                    "ULocate was a game-changer! Their platform helped me find the perfect engineering program and provided insights into each university's offerings. With ULocate's support, I'm now studying Mechanical Engineering at the prestigious University of Waterloo."
+                </p>
+            </div>
+            
+        </div>
+        <div class="mar-p"> 
+        <p>These heartwarming stories are just a glimpse of the numerous success stories we encounter at ULocate. Our passion lies in helping students like Jessica, Ryan, Michael and Emily achieve their dreams of studying in Canada. If you're embarking on your own journey to find the perfect university, we invite you to explore our platform and experience the personalized support and guidance that ULocate has to offer. Your dream university is just a click away!</p>
+        </div>
+            <!-- Floating Button -->
+    <button class="floating-button">
+        <i class="fas fa-comments"></i> <!-- Font Awesome icon (chat bubble) -->
+        Talk to Our Representative
+    </button>
+    </section>
+
+   
+
+    <script>
+        $("#menu-btn").click(function() {
+            $("nav .navigation ul").addClass("active");
+        });
+        $("#menu-close").click(function() {
+            $("nav .navigation ul").removeClass("active");
+        });
+    </script>
+
+</body>
+<%-include("partials/AuthFooter.ejs")%>
+
+</html>
